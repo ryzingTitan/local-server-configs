@@ -1,0 +1,32 @@
+services:
+  obdtrack-api:
+    image: ghcr.io/ryzingtitan/obdtrack-api:1.0.0
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+    container_name: cashcub-api
+    networks:
+      - obdtrack_internal
+  obdtrack:
+    image: ghcr.io/ryzingtitan/obdtrack:1.0.0
+    ports:
+      - "8091:80"
+    restart: unless-stopped
+    depends_on:
+      - obdtrack-api
+    networks:
+      - obdtrack_internal
+    # --- How cashcub connects to the API ---
+    # Inside the 'cashcub' container, you can access the API at:
+    # http://cashcub-api:8080/ (assuming the cashcub-api exposes port 8080 internally)
+    environment:
+      API_BASE_URL: ${API_BASE_URL}
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_GOOGLE_ID: ${AUTH_GOOGLE_ID}
+      AUTH_GOOGLE_SECRET: ${AUTH_GOOGLE_SECRET}
+
+networks:
+  obdtrack_internal:
+    internal: true

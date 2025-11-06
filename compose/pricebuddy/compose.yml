@@ -1,0 +1,56 @@
+services:
+  app:
+    image: jez500/pricebuddy:latest
+    ports:
+      - 8095:80
+    volumes:
+      - storage:/app/storage
+    environment:
+      DB_HOST: database
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
+      APP_USER_EMAIL: admin@example.com # Only used for seeding the database
+      APP_USER_PASSWORD: admin # Only used for seeding the database
+      SCRAPER_BASE_URL: http://scraper:3000 # Url to Name of the scrapper service
+      AFFILIATE_ENABLED: "true" # See https://pricebuddy.jez.me/support-project.html
+    container_name: pricebuddy
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - default
+  database:
+    image: docker.io/mysql:8.2
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    container_name: pricebuddy-db
+    restart: unless-stopped
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 1m
+
+  scraper:
+    image: docker.io/amerkurev/scrapper:latest
+    container_name: pricebuddy-scraper
+    restart: unless-stopped
+    networks:
+      - default
+
+volumes:
+  storage:
+  database:
+
+networks:
+  default:

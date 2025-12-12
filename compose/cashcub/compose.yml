@@ -1,6 +1,6 @@
 services:
   cashcub-api:
-    image: ghcr.io/ryzingtitan/cashcub-api:1.3.0
+    image: ghcr.io/ryzingtitan/cashcub-api:1.4.0
     environment:
       DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}
@@ -11,7 +11,7 @@ services:
       - cashcub-internal
       - default
   cashcub:
-    image: ghcr.io/ryzingtitan/cashcub:1.6.0
+    image: ghcr.io/ryzingtitan/cashcub:1.7.0
     ports:
       - "8090:3000"
     container_name: cashcub
@@ -27,6 +27,7 @@ services:
       AUTH0_CLIENT_ID: ${AUTH0_CLIENT_ID}
       AUTH0_CLIENT_SECRET: ${AUTH0_CLIENT_SECRET}
       AUTH0_SECRET: ${AUTH0_SECRET}
+      AUTH0_AUDIENCE: ${AUTH0_AUDIENCE}
       APP_BASE_URL: ${APP_BASE_URL}
 
 networks:

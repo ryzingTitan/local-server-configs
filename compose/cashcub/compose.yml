@@ -11,7 +11,7 @@ services:
       - cashcub-internal
       - default
   cashcub:
-    image: ghcr.io/ryzingtitan/cashcub:1.8.0
+    image: ghcr.io/ryzingtitan/cashcub:1.9.0
     ports:
       - "8090:3000"
     container_name: cashcub

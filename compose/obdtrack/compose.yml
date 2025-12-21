@@ -1,6 +1,6 @@
 services:
   obdtrak-api:
-    image: ghcr.io/ryzingtitan/obdtrak-api:6.1.0
+    image: ghcr.io/ryzingtitan/obdtrak-api:6.2.0
     environment:
       DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}

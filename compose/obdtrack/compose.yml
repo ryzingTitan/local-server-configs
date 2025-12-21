@@ -1,6 +1,6 @@
 services:
   obdtrak-api:
-    image: ghcr.io/ryzingtitan/obdtrak-api:6.0.0
+    image: ghcr.io/ryzingtitan/obdtrak-api:6.1.0
     environment:
       DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}
@@ -11,7 +11,7 @@ services:
       - obdtrak-internal
       - default
   obdtrak:
-    image: ghcr.io/ryzingtitan/obdtrak:6.0.0
+    image: ghcr.io/ryzingtitan/obdtrak:6.1.0
     ports:
       - "8091:3000"
     container_name: obdtrak
@@ -27,6 +27,7 @@ services:
       AUTH0_CLIENT_ID: ${AUTH0_CLIENT_ID}
       AUTH0_CLIENT_SECRET: ${AUTH0_CLIENT_SECRET}
       AUTH0_SECRET: ${AUTH0_SECRET}
+      AUTH0_AUDIENCE: ${AUTH0_AUDIENCE}
       APP_BASE_URL: ${APP_BASE_URL}
 
 networks:

@@ -11,7 +11,7 @@ services:
       - obdtrak-internal
       - default
   obdtrak:
-    image: ghcr.io/ryzingtitan/obdtrak:6.1.0
+    image: ghcr.io/ryzingtitan/obdtrak:6.2.0
     ports:
       - "8091:3000"
     container_name: obdtrak

@@ -1,6 +1,6 @@
 services:
   cashcub-api:
-    image: ghcr.io/ryzingtitan/cashcub-api:1.4.0
+    image: ghcr.io/ryzingtitan/cashcub-api:1.5.0
     environment:
       DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}

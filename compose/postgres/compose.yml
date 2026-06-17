@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:18.4-trixie
     container_name: postgres
     restart: always
     environment:

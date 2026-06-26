@@ -1,0 +1,2 @@
+# Run database and volume backup every day at 06:00 UTC
+0 6 * * * /bin/bash /home/kstoltzfus/scripts/full-backup.sh >> /home/kstoltzfus/scripts/backup.log 2>&1

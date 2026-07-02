@@ -4,9 +4,9 @@ services:
     container_name: open-webui
     restart: always
     ports:
-      - "8098:8080" 
+      - "8098:8080"
     environment:
-      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      - USER_AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
     volumes:
       - open-webui:/app/backend/data
 

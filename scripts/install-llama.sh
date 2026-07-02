@@ -1,0 +1,1 @@
+curl -LsSf https://llama.app/install.sh | sh

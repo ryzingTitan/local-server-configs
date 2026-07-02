@@ -1,0 +1,21 @@
+[Unit]
+Description=Gemma4 E4B model via llama.cpp
+After=network.target
+
+[Service]
+Type=simple
+User=kstoltzfus
+Group=kstoltzfus
+WorkingDirectory=/home/kstoltzfus/llama-models
+
+ExecStart=llama serve -m gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf --alias "gemma4:e4b" -t 4 -c 32768 --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8095
+
+Restart=on-failure
+RestartSec=5
+
+# Keep logs in the systemd journal
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

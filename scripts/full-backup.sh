@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-BACKUP_DIR="/home/kstoltzfus/backups"     
+BACKUP_DIR="/mnt/external/backups"     
 VOLUME_HOST_PATH="/home/kstoltzfus/.local/share/containers/storage/volumes" 
 
 # Database Configuration

@@ -1,0 +1,13 @@
+[Unit]
+Description=File Browser Service
+After=network.target
+
+[Service]
+User=kstoltzfus
+Group=kstoltzfus
+Type=simple
+ExecStart=/usr/local/bin/filebrowser -c /etc/filebrowser/config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+{
+  "port": 8094,
+  "baseURL": "/",
+  "root": "/mnt/external/file-browser",
+  "address": "0.0.0.0",
+  "log": "stdout",
+  "database": "/home/kstoltzfus/file-browser/filebrowser.db"
+}

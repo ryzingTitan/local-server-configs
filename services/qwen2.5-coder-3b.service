@@ -1,5 +1,5 @@
 [Unit]
-Description=Gemma4 E4B model via llama.cpp
+Description=Qwen2.5-Coder 3B model via llama.cpp
 After=network.target
 
 [Service]
@@ -8,7 +8,7 @@ User=kstoltzfus
 Group=kstoltzfus
 WorkingDirectory=/home/kstoltzfus/llama-models
 
-ExecStart=/usr/bin/snap run llama-cpp server -m gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf --alias "gemma4:e4b" -t 4 -c 32768 --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8095
+ExecStart=/usr/bin/snap run llama-cpp server -m Qwen2.5-Coder-3B-Instruct-Q4_K_M.gguf --alias "qwen2.5-coder:3b" -t 4 -c 16384 --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8093
 
 Restart=on-failure
 RestartSec=5

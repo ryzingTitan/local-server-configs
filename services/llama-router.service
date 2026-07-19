@@ -1,5 +1,5 @@
 [Unit]
-Description=Qwen2.5-Coder 3B model via llama.cpp
+Description=llama.cpp Router (multi-model server)
 After=network.target
 
 [Service]
@@ -8,7 +8,7 @@ User=kstoltzfus
 Group=kstoltzfus
 WorkingDirectory=/home/kstoltzfus/llama-models
 
-ExecStart=/usr/bin/snap run llama-cpp server -m Qwen2.5-Coder-3B-Instruct-Q4_K_M.gguf --alias "qwen2.5-coder:3b" -t 4 -c 16384 --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8093
+ExecStart=/usr/bin/snap run llama-cpp server --models-preset /home/kstoltzfus/llama-models/models.ini --models-max 1 --host 0.0.0.0 --port 8095
 
 Restart=on-failure
 RestartSec=5

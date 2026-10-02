@@ -1,6 +1,6 @@
 services:
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.11.3
+    image: ghcr.io/open-webui/open-webui:v0.11.4
     container_name: open-webui
     restart: always
     ports:
@@ -10,26 +10,8 @@ services:
     volumes:
       - open-webui:/app/backend/data
 
-  core:
-    container_name: searxng-core
-    image: docker.io/searxng/searxng:2026.9.1-18af21159
-    restart: always
-    ports:
-      - "8099:8080" 
-    volumes:
-      - core-config:/etc/searxng/
-      - core-data:/var/cache/searxng/
-
-  valkey:
-    container_name: searxng-valkey
-    image: docker.io/valkey/valkey:9.1.2-alpine
-    command: valkey-server --save 30 1 --loglevel warning
-    restart: always
-    volumes:
-      - valkey-data:/data/
-
   open-terminal:
-    image: ghcr.io/open-webui/open-terminal
+    image: ghcr.io/open-webui/open-terminal:0.14.0
     container_name: open-terminal
     restart: always
     volumes:
@@ -39,12 +21,6 @@ services:
 
 volumes:
   open-webui:
-    external: true
-  core-data:
-    external: true
-  core-config:
-    external: true    
-  valkey-data:
     external: true
   open-terminal:
     external: true

@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/hargata/lubelogger:v1.7.1
+    image: ghcr.io/hargata/lubelogger:v1.7.3
     restart: unless-stopped
     container_name: lubelogger
     volumes:

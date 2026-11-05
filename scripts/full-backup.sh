@@ -69,7 +69,6 @@ backup_volume() {
 backup_volume "lubelogger_data" "lubelogger"
 backup_volume "lubelogger_keys" "lubelogger"
 backup_volume "open-webui" "open-webui"
-backup_volume "open-terminal" "open-terminal"
 
 echo -e "\n=========================================="
 echo "🚀 FULL BACKUP COMPLETED SUCCESSFULLY!"
